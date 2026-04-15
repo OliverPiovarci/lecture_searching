@@ -1,7 +1,5 @@
 import json
 
-from setuptools.dist import sequence
-
 
 def read_data(filename, field):
     with open("sequential.json", "r") as file:
