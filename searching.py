@@ -20,13 +20,16 @@ def linear_search(sequence, number):
         if value == number:
             seznam.append(idx)
             count += 1
-        slovnik["positions"] = seznam
-        slovnik["count"] = count
+    slovnik["positions"] = seznam
+    slovnik["count"] = count
     return slovnik
 
 def main():
     data1 = read_data("sequential.json", "unordered_numbers")
     print(data1)
+    number = 7
+    result = linear_search(data1, number)
+    print(result)
 
 if __name__ == "__main__":
     main()
