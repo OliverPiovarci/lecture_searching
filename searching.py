@@ -65,6 +65,21 @@ def test_complexity():
         times_binear.append(duration_binear / repetitions)
     return list_of_n, times_linear, times_binear
 
+def pattern_search(sequence, pattern):
+    positions = set()
+    pattern_length = len(pattern)
+    sequence_length = len(sequence)
+    for i in range(sequence_length - pattern_length):
+        match = True
+
+        for j in range(pattern_length):
+            if sequence[i + j] != pattern[j]:
+                match = False
+                break
+        if match:
+            positions.add(i)
+    return positions
+
 def main():
     data1 = read_data("sequential.json", "ordered_numbers")
     print(data1)
