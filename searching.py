@@ -1,5 +1,5 @@
 import json
-
+import time
 
 def read_data(filename, field):
     with open("sequential.json", "r") as file:
@@ -43,8 +43,15 @@ def main():
     data1 = read_data("sequential.json", "ordered_numbers")
     print(data1)
     number = 7
-    result = linear_search(data1, number)
+    duration = 0
+    repetitions = 100
+    for measurements in range(repetitions):
+        start = time.perf_counter()
+        result = linear_search(data1, number)
+        end = time.perf_counter()
+        duration += end - start
     print(result)
+    print(duration / repetitions)
     binar = binary_search(data1, number)
     print(binar)
 
