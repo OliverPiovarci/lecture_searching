@@ -12,6 +12,18 @@ def read_data(filename, field):
 
     return data.get(field, None)
 
+def linear_search(sequence, number):
+    slovnik = {}
+    count = 0
+    seznam = []
+    for idx, value in enumerate(sequence):
+        if value == number:
+            seznam.append(idx)
+            count += 1
+        slovnik["positions"] = seznam
+        slovnik["count"] = count
+    return slovnik
+
 def main():
     data1 = read_data("sequential.json", "unordered_numbers")
     print(data1)
