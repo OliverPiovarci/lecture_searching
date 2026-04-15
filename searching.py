@@ -1,31 +1,20 @@
-import os
 import json
 
-# get current working directory path
-cwd_path = os.getcwd()
+def read_data(filename, field):
+    with open("sequential.json", "r") as file:
+        lines = json.load(file)
 
+    if field not in lines:
+        return None
 
-def read_data(file_name, field):
-    """
-    Reads json file and returns sequential data.
-    :param file_name: (str), name of json file
-    :param field: (str), field of a dict to return
-    :return: (list, string),
-    """
-    file_path = os.path.join(cwd_path, file_name)
-    with open(file_path, "r") as file_obj:
-        data = json.load(file_obj)
-    if field in data.keys():
-        return data[field]
-    else:
-        print(f"Chyba! {field} nie je v súbore.")
+    with open(filename, "r") as file:
+        data = json.load(file)
 
+    return data.get(field, None)
 
 def main():
-    pass
+    data1 = read_data("sequential.json", "unordered_numbers")
+    print(data1)
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-    my_data = read_data("sequential.json", "unordered_numbers")
-    print(my_data)
